@@ -1,0 +1,48 @@
+<html ng-app="MyApp">
+<head>
+        <title>Your Shopping Cart</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+<script src="app.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<body ng-controller="Mycontroller">
+
+        <div class="search">
+          <h1>Artist Directory</h1>
+          <label>Search:</label>
+        <input ng-model="query"/>
+        <label class="formgroup">by:
+        <select ng-model="orderArtists">
+          <option value="name">Name</option>
+          <option value="reknown">Reknown</option>
+        </select>
+        </label>
+        <label class="formgroup">ascending
+          <input type="radio" ng-model="direction" checked/>
+          <label class="formgroup">descending
+          <input type="radio" ng-model="direction" value="reverse"/>
+        </label>
+
+      </label>
+        </div>
+        <div ng-hide="hide" class="main">
+                <ul class="artistlist">
+                  <li class="artist cf" ng-repeat="artist in artists|filter:query|orderBy:orderArtists:direction">
+                    <img ng-src="images/{{artist.shortname}}_tn.jpg"/>
+                    <div class="info">
+                      <h2>{{artist.name | uppercase}}</h2>
+                      <h3>{{artist.reknown}}</h3>
+
+                    </div>
+                  </li>
+                </ul>
+
+        </div>
+        <button ng-click="items[items.length]=items.length">Add</button>
+        <button ng-click="hide=!hide">Hide/Show</button>
+</body>
+<script>
+
+</script>
+
+</html>
